@@ -1,0 +1,125 @@
+/*
+  ./scss/ieps_framework/_variables.scss
+  Variables du framework
+*/
+
+/* COULEURS */
+  //Couleur Fond Footer
+  $couleur1: #191919;
+  $couleur1Claire: lighten($couleur1, 30%);
+  $couleur1Foncee: darken($couleur1, 30%);
+
+  //Couleur white
+  $couleur2: #FFFFFF;
+  $couleur2Claire: lighten($couleur2, 30%);
+  $couleur2Foncee: darken($couleur2, 30%);
+
+  // Couleur Police
+  $couleur3: #6b6b6b;
+  $couleur3Claire: lighten($couleur3, 30%);
+  $couleur3Foncee: darken($couleur3, 30%);
+
+  // Couleur Titre
+  $couleur4: #b05a5a;
+  $couleur4Claire: lighten($couleur4, 20%);
+  $couleur4Foncee: darken($couleur4, 20%);
+
+  // Couleur Police Footer
+  $couleur5: #999;
+  $couleur5Claire: lighten($couleur5, 30%);
+  $couleur5Foncee: darken($couleur5, 30%);
+
+  // Couleur Fond Page
+  $couleur6: #2e2e2e ;
+  $couleur6Claire: lighten($couleur6, 30%);
+  $couleur6Foncee: darken($couleur6, 30%);
+
+  // Gris
+  $couleurNeutre: #a0a0a0;
+  $couleurNeutreClaire: lighten($couleurNeutre, 30%);
+  $couleurNeutreFoncee: darken($couleurNeutre, 30%);
+
+  // Arrière-plan
+  $fondPage: url(../images/bg1.jpg);
+
+/* DIMENSIONS DES BOITES */
+$largeurBoiteFixe: 800px;
+
+
+/* BORDS  DES BOITES */
+$boiteBordsCouleur: $couleur6;
+$boiteBordsDimension: 1px;
+$boiteBordsPadding: .5em .8em;
+
+/* BOITES FLOTTANTES */
+$boiteFlottanteLargeur: 200px;
+$boiteFlottanteMargin: 2rem;
+
+/* TAILLE DES CONTENUS */
+$contenuGrand: 1.5rem;
+$contenuMedium: .8rem;
+$contenuPetit: .7rem;
+
+/* MENUS */
+$menuCouleurOff: $couleur1;
+$menuCouleurTexteOff: $couleur1Claire;
+
+$menuCouleurOn: $couleur2;
+$menuCouleurTexteOn: #fff;
+
+$menuMarge: 1px;
+
+  // MENU HORIZONTAL
+    // Le menu
+      $menuHorizLiensAlignement: center;
+      $menuHorizLiensGrow: 0;
+      $menuHorizLiensMarge: 0px;
+      $menuHorizLiensTexteAlignement: center;
+
+    // Les liens
+      $menuHorizLiensFondCouleur: $couleur4;
+      $menuHorizLiensTexteCouleur: #eee;
+      $menuHorizLiensPadding: .5em 1em;
+      $menuHorizLiensHoverFondCouleur: $couleur4Foncee;
+      $menuHorizLiensHoverTexteCouleur: #fff;
+      $menuHorizLiensActifFondCouleur: darken($couleur1, 15%);
+      $menuHorizLiensActifTexteCouleur: #fff;
+
+    // Les sous-menus dropdown
+      $menuDropDownLiensFondCouleur: lighten($couleur1, 10%);
+      $menuDropDownLiensTexteCouleur: #fff;
+      $menuDropDownLiensPadding: 1em;
+      $menuDropDownHoverLiensFondCouleur: lighten($couleur1, 10%);
+      $menuDropDownHoverLiensTexteCouleur: #fff;
+
+  // MENU SLIDER
+    // Le bouton
+      $menuSliderBtnTop: 1em;
+      $menuSliderBtnLeft: 3em;
+      $menuSliderBtnFondCouleur: $couleur1;
+      $menuSliderBtnTexteCouleur: #eee;
+      $menuSliderBtnPadding: .5em;
+      $menuSliderBtnHoverFondCouleur: darken($couleur1, 20%);
+      $menuSliderBtnHoverTexteCouleur: #fff;
+
+    // Le menu
+      $menuSliderMenuLargeur: 300px;
+      $menuSliderMenuHauteur: 100vh;
+      $menuSliderMenuFondCouleur: lighten($couleur1, 20%);
+
+    // Les liens
+    $menuSliderMenuLiensFondCouleur: #ccc;
+    $menuSliderMenuLiensTexteCouleur: #eee;
+    $menuSliderMenuLiensPadding: .5em;
+    $menuSliderMenuLiensHoverFondCouleur: darken($couleur1, 10%);
+    $menuSliderMenuLiensHoverTexteCouleur: #fff;
+
+/* GRILLE */
+$grilleGouttiere: 1.3rem;
+$grillesColonnesNombre: 12;
+
+$grilleBreakPoints: ('xs': '0',
+                      's': '568px',
+                      'm': '768px',
+                      'l': '1024px',
+                      'xl': '1280px');

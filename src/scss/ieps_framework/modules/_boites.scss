@@ -1,0 +1,46 @@
+/*
+  ./src/scss/ieps_framework/modules/_boites.scss
+  Module des boites
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+/* Type de boîtes */
+.boite-fixe {
+  width: 100%;
+  max-width: $largeurBoiteFixe;
+  margin: auto;
+}
+
+.boite-marge-nulle {
+  margin: 0;
+}
+
+.boite-bords {
+  border: $boiteBordsCouleur $boiteBordsDimension solid;
+  padding: $boiteBordsPadding;
+}
+
+.boite-flottante-gauche {
+  float: left;
+  margin-right: $boiteFlottanteMargin;
+  width: $boiteFlottanteLargeur;
+}
+
+.boite-flottante-droite {
+  float: right;
+  margin-left: $boiteFlottanteMargin;
+  width: $boiteFlottanteLargeur;
+}
+
+.boite-flottante-gauche img, .boite-flottante-droite img {
+  width: 100%;
+}
+
+.boite-clearfix:after {
+   content: '';
+   display: block;
+   clear: both;
+}

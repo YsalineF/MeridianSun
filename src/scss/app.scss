@@ -1,0 +1,577 @@
+/*
+./src/scss/app.scss
+Fichier de surcharge
+*/
+
+@import 'ieps_framework/variables';
+
+/*  -------------------------------------------
+SPECIFICATIONS GENERALES
+-------------------------------------------*/
+@font-face {
+font-family: 'Market Deco';
+font-style: normal;
+font-weight: normal;
+src: url('../fonts/Market_Deco.woff') format('woff');
+}
+
+body {
+  margin: 0;
+  @media(min-width: 1024px) {
+    background: $fondPage;
+  }
+}
+
+* {
+  font-family: 'Merriweather', serif;
+  color: $couleur3;
+}
+
+h1,
+h1>a,
+h2,
+h2>a,
+h3,
+h4 {
+  font-family: 'Market Deco', regular;
+  color: $couleur4;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    color: $couleur3;
+    opacity: 50%;
+  }
+}
+/* -------------------------------------------
+OBJETS PARTICULIERS
+-------------------------------------------*/
+// Permet de mettre le fond de la boite-fixe en $couleur2
+.boiteCouleurClaire {
+  background: $couleur2;
+  padding: .5em 2em;
+}
+
+// Permet de mettre le fond en $couleur6 (footer)
+.boiteCouleurFoncee {
+  background: $couleur6;
+  padding: .5em 2em;
+}
+
+  // ---------- HEADER -----------------------
+  .o-siteHeader {
+    // Partie avec le logo et la barre de navigation des réseaux sociaux et le barre de recherche
+    &__topBlock {
+      padding: .5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      @media (min-width: 768px) {
+        justify-content: space-between;
+      }
+      // logo
+      &__a-logo {
+        font-family: 'Kaushan Script', cursive;
+        color: $couleurNeutre;
+        font-weight: normal;
+        font-size: 2.3rem;
+        margin: 0;
+        @media (min-width: 768px) {
+          margin: 1.5rem 0;
+        }
+      }
+      // Barre de navigation des réseaux sociaux et le barre de recherche
+      &__m-topNavBar {
+        // aligne le nav sur le logo du site
+        margin-top: 0.67em;
+        &__menuList {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          &__a-listItem {
+            margin-right: 5px;
+            padding-top: 1rem;
+            @media (min-width: 768px) {
+              padding: 0;
+            }
+            //barre de recherche
+            &--searchBar {
+              order: -1;
+              margin: 0 15rem;
+              @media (min-width: 768px) {
+                order: 0;
+                margin: 0;
+              }
+            }
+            //barre de recherche -- Barre
+            &__searchBarInput {
+              width: 12rem;
+              @media (min-width: 768px) {
+                width: 5rem;
+                &:focus {
+                  width: 11rem;
+                }
+              }
+            }
+            //barre de recherche -- Bouton recherche
+            &__searchBarButton {
+              position: absolute;
+              background: $couleur6;
+              border: none;
+              padding: 3px 6px;
+            }
+          }
+        }
+      }
+    }
+    // Bandeeau du menu de navigation principal sur les écrans à partir de la taille M
+    &__backgroundMainNav {
+      display: none;
+      @media (min-width: 768px) {
+        display: block;
+        background: $couleur4;
+        padding: .5em 0;
+        // Calcul pour que le bandeau dépasse de chaque côté afin d'avoir l'effet de rabattement vers l'arrière
+        width: calc(100% + 2em + 50px);
+        position: relative;
+        left: calc(-1em - 25px);
+        // Ajout des éléments du bandeau qui partent en arrière de chaque côté
+        &:before {
+          content: '';
+          display: block;
+          background: $couleur4Foncee;
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+          transform: skewY(45deg);
+          z-index: -1;
+        }
+        &:after {
+          content: '';
+          display: block;
+          background: $couleur4Foncee;
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          right: 0;
+          bottom: -10px;
+          transform: skewY(-45deg);
+          z-index: -1;
+        }
+        // Menu de navigation principal
+        &__m-mainNav {
+          // Ajout des pointillés en haut et en bas du menu de navigation principal
+          &__menuList {
+            border-top: 1px dashed $couleur3;
+            border-bottom: 1px dashed $couleur3;
+            &__a-listItem {
+              &__link {
+                font-family: 'Market Deco';
+              }
+            }
+          }
+        }
+      }
+    }
+    // Menu select pour le menu de navigation principale sur écran S
+    &__selectMainNav {
+      display: flex;
+      justify-content: center;
+      text-align-last: center;                          // Permet de centrer le texte dans le menu select
+      @media (min-width: 768px) {
+        display: none;
+      };
+      &__m-selectMenu {
+        width: 50%;
+      }
+    }
+    // Flèche à gauche de l'écran sur la page Blog (index) sur les écrans L
+    &__a-leftArrow {
+      display: none;
+      // Affiche la flèche que si on se trouve sur un écran de taille L
+      @media (min-width: 1024px) {
+        display: block;
+        position: absolute;
+        // Découpe de l'image pour avoir 1 des flèches et non 4
+        clip: rect(0px,50px,50px,0px);
+        left: 0;
+        top: 20%;
+        // Obscurcit le fond de la flèche lors d'un hover
+        &:hover {
+          background: url('../images/nav-arrows-dark.png');
+        }
+      }
+    }
+    // Flèche à droite de l'écran sur la page Blog (index) sur les écrans L
+    &__a-rightArrow {
+      display: none;
+      // Affiche la flèche que si on se trouve sur un écran de taille L
+        @media (min-width: 1024px) {
+          display: block;
+        position: absolute;
+        // Découpe de l'image pour avoir 1 des flèches et non 4
+        clip: rect(0px,100px,50px,50px);
+        right: 0;
+        top: 20%;
+        // Obscurcit le fond de la flèche lors d'un hover
+        &:hover {
+          background: url('../images/nav-arrows-dark.png');
+        }
+      }
+    }
+  }
+
+  // ---------------- MAIN -----------------------------
+  // Contenu principal de la page
+  .o-mainContent {
+    // Header du contenu principal
+    &__m-header {
+      // Texte se trouvant sur la page index
+      &__a-textePresentation {
+        padding: 1em .5em;
+      }
+      // Fil d'ariane
+      &__breadcrumb {
+        padding-top: 1.2rem;
+        font-size: .8rem;
+        &__menuList {
+          display: flex;
+          justify-content: center;
+          &__a-listItem {
+            &::before {
+              content: "/\00a0";      // permet d'ajouter un "/" pour séparer les liens et un espace après le "/"
+            }
+            &:after {
+              content: "\00a0";       // ajoute un espace avant le "/" qui sépare les liens
+            }
+            &:first-child::before {
+              content: " ";
+            }
+            &__link {
+              &--homeLink {
+                color: $couleur4;
+              }
+            }
+          }
+        }
+      }
+    }
+    // Section principale
+    &__mainSection {
+      border-top: 1px dashed $couleur3;
+      border-bottom: 1px dashed $couleur3;
+      margin: 1.2rem 0;
+      padding: 1rem 0;
+      &__m-article {
+        margin: 0 1rem;
+        // Pointillés qui séparent chaque article de la page index
+        &:not(:last-child) {
+          border-bottom: 1px dashed $couleur3;
+          padding-bottom: 1.5em;
+        }
+        &:not(:first-child) {
+          padding-top: 1.5em;
+        }
+
+        &__headerArticle {
+          padding: 0 0 1em 0;
+          &__a-title {
+            margin: 0;
+            > a {
+              &:hover {
+              font-size: 1.6rem;
+              }
+            }
+          }
+          // Menu se trouvant sous le titre de l'article
+          &__menuList {
+            display: flex;
+            justify-content: center;
+            &__a-listItem {
+              padding: 0 1em;
+              font-size: .6rem;
+              &:not(:last-child) {
+                border-right: 1px solid #6b6b6b;
+              }
+              &__link {
+                &:hover {
+                  font-size: .9em;
+                }
+              }
+            }
+          }
+        }
+        // Les différentes couvertures des articles
+        &__a-coverArticlePhotography {
+          position: relative;
+          height: auto;
+          max-width: calc(100% + 97px);
+          left: calc(-0em - 48px);
+        }
+        &__a-coverArticleYoutube {
+          border: none;
+          height: 400px;
+          width: calc(100% + 96px);
+          position: relative;
+          left: calc(-0em - 48px);
+          filter: grayscale(100%);
+        }
+        &__a-coverArticleSoundcloud {
+          width: 100%;
+          border: none;
+          filter: grayscale(100%);
+        }
+        &__contentText {
+          line-height: 1.5rem;
+        }
+        // Tags se trouvant sous le content de la page "post"
+        &__tags {
+          &__menuList {
+            display: flex;
+            &__a-listItem {
+              // Ajoute une virgule et un espace après chaque tag, sauf après le dernier
+              &:not(:last-of-type) {
+                &:after {
+                  content: ',\00a0';
+                }
+              }
+              &__link {
+                color: $couleurNeutre;
+              }
+            }
+          }
+        }
+      }
+      // img auteur pour la page About
+      &__a-imgAuthor {
+        @media(max-width: 767px) {
+          float: none;                            // permet de retirer la classe "boite-flottante-gauche" à l'image pour un écran S
+          margin: 0 auto 1rem auto;
+          width: auto;
+          display: block;
+        }
+      }
+      // texte de la page about
+      &__m-contentText {
+        overflow: hidden;                        // permet que le texte ne passe pas en dessous de la photo
+        &__a-text {
+          line-height: 1.5rem;
+        }
+        &__a-title2 {
+          font-size: 1.2rem;
+          margin: 2rem 0 0 0;
+        }
+      }
+      // balise address pour la googleMap sur la page Contact
+      &__m-map {
+        &__a-googleMap {
+          border: none;
+          width: calc(100% + 4em);
+          position: relative;
+          left: calc(-0em - 2em);
+          height: 300px;
+        }
+      }
+      // ASIDE pour formulaire de contact avec h2 et p
+      &__asideContact {
+        &__a-title {
+          font-size: 1.2rem;
+          font-weight: normal;
+          padding-top: 1rem;
+        }
+        &__a-text {
+          font-size: .8rem;
+          line-height: 1.5rem;
+          margin: 1rem 0;
+        }
+        // Formulaire de contact sur la page "Contact"
+        &__m-contactForm {
+          background: $couleurNeutreClaire;
+          padding: 1.5rem;
+          &__a-formItem {
+            margin-bottom: 1rem;
+            padding: .3rem;
+            border: 1px solid $couleurNeutre;
+            &--textArea {
+              @extend .o-mainContent__mainSection__asideContact__m-contactForm__a-formItem;
+              @media(min-width: 568px) {
+                width: 90%;
+                height: 300px;
+              }
+            }
+          }
+          // Bouton submit du formulaire de contact
+          &__a-formBtn {
+            background: $couleurNeutreFoncee;
+            border-radius: 10%;
+            padding: .2rem .9rem;
+            color: $couleur2;
+            border: none;
+            &:hover {
+              background: $couleur6;
+            }
+          }
+        }
+      }
+    }
+    // Section secondaire se trouvant sur la page 'post'
+    &__secondarySection {
+      border-top: 1px dashed $couleur3;
+      border-bottom: 1px dashed $couleur3;
+      margin: 1rem 0 3rem 0;
+      padding: 2rem 0;
+      &__a-title {
+        margin: 0;
+      }
+      // Related posts se trouvant sur la page de post
+      &__m-relatedArticle {
+        &__a-relatedPostPicture {
+          width: 100%;
+          max-height: 120px;                                                                          // pour match la hauteur de la première photo (petite fille)
+          &--youtube {
+            @extend .o-mainContent__secondarySection__m-relatedArticle__a-relatedPostPicture;
+            border: none;
+            filter: grayscale(100%);
+          }
+        }
+        &__a-title {
+          font-size: 1rem;
+          font-weight: normal;
+        }
+        &__menuList {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: left;
+          &__a-listItem {
+            padding: 0 1em;
+            font-size: .6rem;
+            &:not(:last-child) {
+              border-right: 1px solid #6b6b6b;
+            }
+            &__link {
+              &:hover {
+                font-size: .9em;
+              }
+            }
+          }
+        }
+      }
+    }
+    // Pagination de bas de page pour la page Index
+    &__m-pagination {
+      margin: 2em 0;
+      &__a-link {
+        background: $couleurNeutreFoncee;
+        color: $couleur2;
+        border-radius: 25%;
+        margin: .2rem;
+        &:hover {
+          color: $couleur2;
+        }
+        &.active {
+          background: $couleur6;
+        }
+        &--posts {
+          @extend .o-mainContent__m-pagination__a-link;
+          border-radius: 10%;
+        }
+      }
+    }
+  }
+
+  // ------------------------ FOOTER -----------------------
+  .o-siteFooter {
+    line-height: 1.5rem;
+    // Cards qui constituent le footer
+    &__m-footerCard {
+      @media(max-width: 767px) {
+        padding-bottom: 1rem;
+        &:nth-child(2) {
+          order: 3;
+        }
+        &:nth-child(3) {
+          order: 4;
+        }
+        &:nth-child(4) {
+          order: 6;
+        }
+        &:nth-child(5) {
+          order: 2;
+        }
+        &:nth-child(6) {
+          order: 5;
+        }
+      }
+      &__a-title {
+        font-size: 1em;
+        font-weight: normal;
+        &--twitter {
+          @extend .o-siteFooter__m-footerCard__a-title;
+          padding-bottom: .5rem;
+          border-bottom: 1px dotted $couleur3;
+        }
+      }
+      // Barre de recherche du footer
+      &__a-searchBarInput {
+        background: $couleur1;
+        border: none;
+        width: 90%;
+        padding: .3rem 0 .3rem .5rem;                                  // "taille intérieure" de la barre de recherche
+      }
+      &__menuList {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        &--listStyleVisible {
+          @extend .o-siteFooter__m-footerCard__menuList;
+          list-style: initial;
+          display: block;
+          padding-left: 1rem;
+        }
+        &__a-listItem {
+          &__link {
+            font-size: .7rem;
+            padding-right: .3rem;
+            &--mediumFont {
+              @extend .o-siteFooter__m-footerCard__menuList__a-listItem__link;
+              font-size: 1.1rem;
+            }
+            &--bigFont {
+              @extend .o-siteFooter__m-footerCard__menuList__a-listItem__link;
+              font-size: 1.6em;
+              font-weight: bold;
+            }
+          }
+        }
+        &--tags {
+          @extend .o-siteFooter__m-footerCard__menuList;
+          @media(max-width: 767px) {
+            margin-right: 5rem;
+          }
+        }
+      }
+      &__a-textAbout {
+        line-height: 1.7rem;
+      }
+    }
+    // Partie bottom du footer
+    &__m-copyright {
+      background: $couleur1;
+      padding: 1rem;
+      &__a-text {
+        font-size: .8rem;
+        margin: 0;
+      }
+    }
+  }
